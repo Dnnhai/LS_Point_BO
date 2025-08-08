@@ -1,7 +1,6 @@
-import os
+
 import pytest
 from playwright.sync_api import sync_playwright
-from Testdata.test_data import Data
 
 
 @pytest.fixture(scope="session", autouse=True)
