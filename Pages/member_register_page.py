@@ -1,5 +1,5 @@
-import logging
-from Pages.base_page import BasePage
+import time
+
 from Utils.user_data_generator import UserDataGenerator
 from Locators.member_register_page_locators import MemberRegPageLocators
 
@@ -34,15 +34,14 @@ class MemberRegisterPage(MemberRegPageLocators):
         self.enter_text(self.ID_NUMBER_FILED, UserDataGenerator.generate_random_ID())
 
     def choose_location(self):
-        try:
-            self.click_on(self.CITY_FILED)
-            self.click_on(self.CITY_THE_FIRST)
-        except:
-            pass
 
+        time.sleep(0.3)
+        self.click_on(self.CITY_FILED)
+        self.click_on(self.CITY_THE_FIRST)
+        time.sleep(0.3)
         self.click_on(self.DISTRICT_FILED)
         self.click_on(self.DISTRICT_THE_FIRST)
-
+        time.sleep(0.3)
         self.click_on(self.WARD_FILED)
         self.click_on(self.WARD_THE_FIRST)
 
@@ -50,20 +49,24 @@ class MemberRegisterPage(MemberRegPageLocators):
         self.click_on(self.CHOOSE_CARD_AUTO)
 
     def choose_register_store_WL_HN(self):
+        time.sleep(0.3)
         self.click_on(self.REGISTER_STORE)
         self.click_on(self.REGISTER_STORE_THE_WL_HN)
 
     def choose_register_store_LDS(self):
+        time.sleep(0.3)
         self.click_on(self.REGISTER_STORE)
         self.click_on(self.REGISTER_STORE_THE_LDS_HN)
 
     def chose_card_type_WL_standard(self):
+        time.sleep(0.3)
         self.click_on(self.SELECT_CARD_TYPE)
         self.click_on(self.SELECT_CARD_TYPE_WL_STANDARD)
         #self.SELECT_CARD_TYPE.click()
         #self.SELECT_CARD_TYPE_STANDARD.click()
 
     def chose_card_type_LDS_standard(self):
+        time.sleep(0.3)
         self.click_on(self.SELECT_CARD_TYPE)
         self.click_on(self.SELECT_CARD_TYPE_LDS_STANDARD)
 

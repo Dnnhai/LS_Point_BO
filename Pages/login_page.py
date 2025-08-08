@@ -1,4 +1,6 @@
 import logging
+import time
+
 import pyotp
 from Locators.login_page_locators import LoginPageLocators
 from Pages.base_page import BasePage
@@ -8,6 +10,7 @@ from Testdata.test_data import Data
 class LoginPage(LoginPageLocators):
     def __init__(self, page):
         super().__init__(page)
+        time.sleep(0.1)
         self.navigate_to(Data.BASE_URL_DEV)
         # self.navigate_to(Data.BASE_URL_STG)
 

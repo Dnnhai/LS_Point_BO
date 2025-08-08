@@ -10,6 +10,7 @@ class HomepageLocator(BasePage):
         self.USER_ICON = page.locator('//p-avatar[@icon="pi pi-user"]')
 
         # Member Management group
-        self.MEMBER_MANAGEMENT_TAB = page.locator("//app-menu//ul//li[3]")
+        #self.MEMBER_MANAGEMENT_TAB = page.locator("//app-menu//ul//li[3]")
+        self.MEMBER_MANAGEMENT_TAB = page.locator("a").filter(has_text="Member Management")
         self.MEMBER_REGISTER_TAB = page.locator("//app-menu//ul//li[3]//ul//li[1]")
         self.MEMBER_LIST_TAB = page.locator("//app-menu//ul//li[3]//ul//li[2]")

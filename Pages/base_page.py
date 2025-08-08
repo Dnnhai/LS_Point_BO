@@ -11,9 +11,9 @@ class BasePage:
     def navigate_to(self, url):
         try:
             logging.info(f"Navigate to link: {url}")
-            self.page.goto(url, timeout=self.timeout * 1000)  # time is count by millisecond
+            self.page.goto(url, timeout=self.timeout * 50000)  # time is count by millisecond
         except Exception as e:
-            logging.error(f"Failed to navigate to link: {url}")
+            logging.error(f"Failed to navigate to link: {url}- {e}")
             raise
         except TimeoutError as e:
             logging.error(f"Timeout while navigating to link: {url} - {e}")
@@ -22,7 +22,7 @@ class BasePage:
     @staticmethod
     def click_on(my_locator):
         logging.info(f"click on the locator: {my_locator}")
-        my_locator.wait_for(state="visible", timeout=5000)
+        my_locator.wait_for(state="visible", timeout=10000)
         my_locator.click()
         # self.page.locator(my_locator).wait_for(state="visible", timeout=5000)
         # self.page.click(my_locator)

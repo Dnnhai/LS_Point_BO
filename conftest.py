@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 # Fixture initialize browser
 def browser():
     with sync_playwright() as p:  # Khởi tạo Playwright
-        browser = p.chromium.launch(headless=False)  # p.firefox.launch(headless=False)
+        browser = p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage"])  # p.firefox.launch(headless=False)
         yield browser  # return
         browser.close()  # close browser after used
 
