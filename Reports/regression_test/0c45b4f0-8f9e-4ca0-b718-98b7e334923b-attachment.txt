@@ -1,0 +1,8 @@
+[32mINFO    [0m root:base_page.py:13 Navigate to link: http://103.225.237.73/
+[32mINFO    [0m root:base_page.py:32 enter text 'NGUYENHAI' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='//input[@name="username"]'>'
+
+[32mINFO    [0m root:base_page.py:32 enter text 'Nguyenhai@123' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='internal:role=textbox[name="Enter password..."i]'>'
+
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='internal:role=button[name="Login"i]'>
+[32mINFO    [0m root:base_page.py:57 waiting for element has locator: '<Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='//p-avatar[@icon="pi pi-user"]'>' is appear
+[32mINFO    [0m root:base_page.py:43 get text from the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/'> selector="//div[text()='Login successfully']">', text is: 'Login successfully'

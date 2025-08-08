@@ -1,0 +1,24 @@
+[32mINFO    [0m root:base_page.py:13 Navigate to link: http://103.225.237.73/
+[32mINFO    [0m root:base_page.py:32 enter text 'HAI' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='//input[@name="username"]'>'
+
+[32mINFO    [0m root:base_page.py:32 enter text 'Nguyenhai@123' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='internal:role=textbox[name="Enter password..."i]'>'
+
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='internal:role=button[name="Login"i]'>
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/auth/login?returnUrl=%2F'> selector='//app-menu//ul//li[3]'>
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/'> selector='//app-menu//ul//li[3]//ul//li[1]'>
+[32mINFO    [0m root:base_page.py:32 enter text 'Tôn Hoàng Toàn' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/'> selector="//input[@id='fullname']">'
+
+[32mINFO    [0m root:base_page.py:32 enter text 'qxyttl@testing.com' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//input[@id='email']">'
+
+[32mINFO    [0m root:base_page.py:32 enter text '0905836267' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//input[@id='float-input']">'
+
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//input[@placeholder='Select a date of birth...']">
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector='//div//div//div//div[1]//div//button[2]'>
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//*[starts-with(@class, 'p-datepicker-header')]//button[starts-with(@class, 'p-ripple p-element p-datepicker-prev')]">
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//*[starts-with(@class,'p-yearpicker')]//*[@tabindex='0']">
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//*[starts-with(@class,'p-monthpicker')]//*[@tabindex='0']">
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//*[starts-with(@class,'p-ripple p-element') and text()='12']">
+[32mINFO    [0m root:base_page.py:32 enter text 'KGCEMUCUKV' at the locator: '<Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//input[@id='identityId']">'
+
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//div[@class='p-dropdown p-component p-dropdown-clearable']//span[text()='Select a city...']">
+[32mINFO    [0m root:base_page.py:24 click on the locator: <Locator frame=<Frame name= url='http://103.225.237.73/members/register'> selector="//div[text()=' Thành phố Hà Nội ']">
