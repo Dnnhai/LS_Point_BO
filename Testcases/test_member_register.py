@@ -1,7 +1,6 @@
 import time
 import logging
 
-import pytest
 
 from Testdata.test_data import Data
 from Pages.home_page import HomePage
@@ -24,6 +23,7 @@ class TestMemberRegister:
         home_pg.click_button_member_register()
 
         reg_mem_pg = MemberRegisterPage(page)
+        page.pause()
         reg_mem_pg.enter_fullname()
         reg_mem_pg.enter_email()
         reg_mem_pg.enter_phone_number()
