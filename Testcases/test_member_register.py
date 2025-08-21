@@ -23,7 +23,7 @@ class TestMemberRegister:
         home_pg.click_button_member_register()
 
         reg_mem_pg = MemberRegisterPage(page)
-        page.pause()
+        # page.pause()
         reg_mem_pg.enter_fullname()
         reg_mem_pg.enter_email()
         reg_mem_pg.enter_phone_number()

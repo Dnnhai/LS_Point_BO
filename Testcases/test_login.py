@@ -1,5 +1,3 @@
-import time
-import logging
 from Pages.home_page import HomePage
 from Pages.login_page import LoginPage
 from Testdata.test_data import Data
