@@ -1,4 +1,3 @@
-
 import pytest
 from playwright.sync_api import sync_playwright
 
@@ -6,12 +5,12 @@ from playwright.sync_api import sync_playwright
 @pytest.fixture(scope="session", autouse=True, params=["chromium"])
 # Fixture initialize browser
 def browser(request):
-    with sync_playwright() as p:  # Khởi tạo Playwright
+    with sync_playwright() as p:  # Playwright Initialization
         if request.param == "chromium":
             browser = p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage"])
-       # elif request.param == "firefox":
+        # elif request.param == "firefox":
         #    browser = p.firefox.launch(headless=False)
-        #else:
+        # else:
         #    browser = p.webkit.launch(headless=False)
         yield browser  # return
         browser.close()  # close browser after used
