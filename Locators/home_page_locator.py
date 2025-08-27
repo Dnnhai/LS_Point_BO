@@ -8,6 +8,7 @@ class HomepageLocator(BasePage):
         super().__init__(page)
         self.LOGIN_SUCCESS_MESAGE = page.locator("//div[text()='Login successfully']")
         self.USER_ICON = page.locator('//p-avatar[@icon="pi pi-user"]')
+        self.DASHBOAR_ADMIN = page.get_by_text('DashboardAdminMember')
 
         # Member Management group
         #self.MEMBER_MANAGEMENT_TAB = page.locator("//app-menu//ul//li[3]")

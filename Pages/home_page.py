@@ -10,7 +10,7 @@ class HomePage(HomepageLocator):
 
     def is_login_success(self):
         # user icon is displayed if login successfully
-        return self.is_element_display(self.USER_ICON)
+        return self.is_element_display(self.DASHBOAR_ADMIN)
 
     def click_button_member_management(self):
         self.click_on(self.MEMBER_MANAGEMENT_TAB)
