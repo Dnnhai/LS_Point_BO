@@ -25,7 +25,7 @@ class LoginPage(LoginPageLocators):
         self.click_on(self.LOGIN_BUTTON)
 
     def enter_otp_number(self, totp_secrect):
-        self.AUTHEN_BOARD.wait_for(state="visible", timeout=5000)
+        self.AUTHEN_BOARD.wait_for(state="visible", timeout=10000)
         otp_code = pyotp.TOTP(totp_secrect).now()
         for i, digit in enumerate(otp_code):
             self.OTP_INPUTS[i].fill(digit)
