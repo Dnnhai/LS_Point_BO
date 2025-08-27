@@ -14,8 +14,8 @@ RUN apt-get update -o Acquire::Retries=3 && \
 
 WORKDIR /app
 COPY . .
-RUN if [ -f "requirements.txt" ]; then pip install --no-cache-dir -r requirements.txt; fi
 
-EXPOSE 8000
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "app.py"]
+# Chạy test bằng pytest
+CMD ["pytest", "-v"]
