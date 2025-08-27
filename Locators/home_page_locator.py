@@ -9,6 +9,7 @@ class HomepageLocator(BasePage):
         self.LOGIN_SUCCESS_MESAGE = page.locator("//div[text()='Login successfully']")
         self.USER_ICON = page.locator('//p-avatar[@icon="pi pi-user"]')
         self.DASHBOAR_ADMIN = page.get_by_text('DashboardAdminMember')
+        self.SIDE_BAR_MENU_BUTTON = page.locator('//a[@id="topbar-sidebar-button"]')
 
         # Member Management group
         #self.MEMBER_MANAGEMENT_TAB = page.locator("//app-menu//ul//li[3]")
