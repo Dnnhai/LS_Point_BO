@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 # 1. Cài gói hệ thống cần thiết
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     wget \
     gnupg \
@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y \
     libgbm-dev \
     libxshmfence-dev \
     libgtk-3-0 \
-    && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
+
 
 # 2. Tạo thư mục làm việc
 WORKDIR /app
