@@ -1,5 +1,5 @@
 # Base image ổn định (không dùng latest để tránh lỗi repo)
-FROM ubuntu:20.04
+FROM python:3.11-slim
 
 # Tránh apt hỏi cấu hình (timezone, keyboard...)
 ENV DEBIAN_FRONTEND=noninteractive
@@ -37,7 +37,7 @@ COPY . .
 
 # Nếu có requirements.txt thì cài
 # (bỏ nếu bạn không dùng Python)
-RUN if [ -f "requirements.txt" ]; then pip3 install --no-cache-dir -r requirements.txt; fi
+RUN if [ -f "requirements.txt" ]; then pip install --no-cache-dir -r requirements.txt; fi
 
 # Lệnh mặc định khi chạy container
-CMD ["bash"]
+CMD ["python", "app.py"]
