@@ -7,6 +7,7 @@ class TestLogin:
     def test_login_success(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, Data.PASSWORD_DEV_WL)
+        assert login_page.is_OTP_form_display(), "fail"
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_WL)
         login_page.click_button_verify()
         home_pg = HomePage(page)
