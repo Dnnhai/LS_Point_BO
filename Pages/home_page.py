@@ -13,7 +13,11 @@ class HomePage(HomepageLocator):
         return self.is_element_display(self.SIDE_BAR_MENU_BUTTON)
 
     def click_button_member_management(self):
-        self.click_on(self.MEMBER_MANAGEMENT_TAB)
+        try:
+            self.click_on(self.MEMBER_MANAGEMENT_TAB)
+        except:
+            self.click_on(self.SIDE_BAR_MENU_BUTTON)
+            self.click_on(self.MEMBER_MANAGEMENT_TAB)
 
     def click_button_member_register(self):
         self.click_on(self.MEMBER_REGISTER_TAB)
