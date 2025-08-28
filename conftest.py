@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 def browser(request):
     with sync_playwright() as p:  # Playwright Initialization
         if request.param == "chromium":
-            browser = p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage"])
+            browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"])
         # elif request.param == "firefox":
         #    browser = p.firefox.launch(headless=False)
         # else:
