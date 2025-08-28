@@ -34,7 +34,8 @@ class LoginPage(LoginPageLocators):
         return self.is_element_display(self.AUTHEN_BOARD)
 
     def click_button_verify(self):
-        self.BUTTON_VERIFY.click()
+        self.click_on(self.BUTTON_VERIFY)
+        #self.BUTTON_VERIFY.click()
 
     def get_error_mesasage_login_wrong_pw(self):
         if self.is_element_display(self.WRONG_PW_TOAST):
