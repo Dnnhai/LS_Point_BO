@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from Pages.home_page import HomePage
@@ -13,6 +15,7 @@ class TestLogin:
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_WL)
         login_page.click_button_verify()
         home_pg = HomePage(page)
+        time.sleep(1)
         account_icon = home_pg.is_login_success()
         assert account_icon, "Loggin FAIL"
         mess = home_pg.get_loggin_success_mesasage()
