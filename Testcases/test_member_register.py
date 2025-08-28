@@ -12,7 +12,7 @@ from Utils.utils import Utils
 
 class TestMemberRegister:
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_register_new_member_WestLake(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, Data.PASSWORD_DEV_WL)
@@ -45,7 +45,7 @@ class TestMemberRegister:
         logging.info(f"new user: {login_id}")
         Utils.save_to_file(login_id + " - WL")
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     def test_register_new_member_LDS(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_LDS, Data.PASSWORD_DEV_LDS)
