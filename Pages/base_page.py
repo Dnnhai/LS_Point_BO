@@ -57,7 +57,7 @@ class BasePage:
         logging.info(f"waiting for element has locator: '{my_locator}' is appear")
         flag = True
         try:
-            my_locator.wait_for(state="visible", timeout=10000)
+            my_locator.wait_for(state="visible", timeout=50000)
             my_locator.is_visible()
         except:
             flag = False

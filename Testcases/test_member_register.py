@@ -16,9 +16,12 @@ class TestMemberRegister:
     def test_register_new_member_WestLake(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, Data.PASSWORD_DEV_WL)
+        assert login_page.is_OTP_form_display(), "fail"
+
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_WL)
         login_page.click_button_verify()
         page.wait_for_load_state("networkidle")
+
         home_pg = HomePage(page)
         home_pg.click_button_member_management()
         home_pg.click_button_member_register()
@@ -48,6 +51,8 @@ class TestMemberRegister:
     def test_register_new_member_LDS(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_LDS, Data.PASSWORD_DEV_LDS)
+        assert login_page.is_OTP_form_display(), "fail"
+        
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_LDS)
         login_page.click_button_verify()
         page.wait_for_load_state("networkidle")
