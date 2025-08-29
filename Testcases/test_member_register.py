@@ -52,7 +52,7 @@ class TestMemberRegister:
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_LDS, Data.PASSWORD_DEV_LDS)
         assert login_page.is_OTP_form_display(), "fail"
-        
+
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_LDS)
         login_page.click_button_verify()
         page.wait_for_load_state("networkidle")
