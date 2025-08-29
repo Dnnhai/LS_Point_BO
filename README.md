@@ -5,8 +5,7 @@
 docker pull ghcr.io/dnnhai/ls_point_bo:latest
 ```
 
-## 2. Run Tests without Report 
-	(Quick check to verify the container runs correctly)
+## 2. Run Tests without Report (Quick check to verify the container runs correctly)
 ```bash
 docker run --rm ghcr.io/dnnhai/ls_point_bo:latest
 ```
