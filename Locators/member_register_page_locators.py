@@ -21,7 +21,7 @@ class MemberRegPageLocators(BasePage):
         self.ID_NUMBER_FILED = page.locator("//input[@id='identityId']")
         self.CITY_FILED = page.locator("//div[@class='p-dropdown p-component p-dropdown-clearable']//span[text()='Select a city...']")
         self.CITY_THE_FIRST = page.locator("//div[text()=' Thành phố Hà Nội ']")
-        self.DISTRICT_FILED = page.locator( "//div[@class='p-dropdown p-component p-dropdown-clearable']//span[text()='Select a district...']")
+        self.DISTRICT_FILED = page.locator("//div[@class='p-dropdown p-component p-dropdown-clearable']//span[text()='Select a district...']")
         self.DISTRICT_THE_FIRST = page.locator("//div[text()=' Quận Ba Đình ']")
         self.WARD_FILED = page.locator("//div[@class='p-dropdown p-component p-dropdown-clearable']//span[text()='Select a ward...']")
         self.WARD_THE_FIRST = page.locator("//div[text()=' Phường Cống Vị ']")

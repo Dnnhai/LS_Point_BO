@@ -37,7 +37,9 @@ class MemberRegisterPage(MemberRegPageLocators):
 
         time.sleep(0.3)
         self.click_on(self.CITY_FILED)
+        time.sleep(0.3)
         self.click_on(self.CITY_THE_FIRST)
+
         time.sleep(0.3)
         self.click_on(self.DISTRICT_FILED)
         self.click_on(self.DISTRICT_THE_FIRST)

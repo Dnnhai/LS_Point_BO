@@ -18,7 +18,7 @@ class TestMemberRegister:
         login_page.login(Data.USERNAME_DEV_WL, Data.PASSWORD_DEV_WL)
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_WL)
         login_page.click_button_verify()
-
+        page.wait_for_load_state("networkidle")
         home_pg = HomePage(page)
         home_pg.click_button_member_management()
         home_pg.click_button_member_register()
@@ -30,7 +30,6 @@ class TestMemberRegister:
         reg_mem_pg.enter_phone_number()
         reg_mem_pg.selelect_day_of_birth()
         reg_mem_pg.enter_identity_number()
-        time.sleep(1)
         reg_mem_pg.choose_location()
 
         reg_mem_pg.select_add_card_method_auto()
@@ -38,7 +37,7 @@ class TestMemberRegister:
         reg_mem_pg.chose_card_type_WL_standard()
 
         reg_mem_pg.click_submit_button()
-
+        page.wait_for_load_state("networkidle")
         result = reg_mem_pg.is_register_result_display()
         assert result == 1
         login_id = reg_mem_pg.get_text_by_javascript(reg_mem_pg.LOGIN_ID)
@@ -50,9 +49,8 @@ class TestMemberRegister:
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_LDS, Data.PASSWORD_DEV_LDS)
         login_page.enter_otp_number(Data.TOTP_SECRET_DEV_LDS)
-        # login_page.login(Data.USERNAME_1_STG_LDS, Data.PASSWORD_1_STG)
-        # login_page.enter_otp_number(Data.TOTP_SECRET_1_STG)
         login_page.click_button_verify()
+        page.wait_for_load_state("networkidle")
 
         home_pg = HomePage(page)
         home_pg.click_button_member_management()
@@ -73,6 +71,7 @@ class TestMemberRegister:
         reg_mem_pg.click_submit_button()
 
         # Check if the result pop up is displayed
+        page.wait_for_load_state("networkidle")
         assert reg_mem_pg.is_register_result_display(), "no Result"
         login_id = reg_mem_pg.get_text_by_javascript(reg_mem_pg.LOGIN_ID)
         logging.info(f"New user: {login_id}")

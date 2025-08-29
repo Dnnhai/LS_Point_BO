@@ -1,12 +1,12 @@
 ﻿# LS Point BO - Automation Test with Playwright-pytest
 
 ## 1. Pull Docker Image
-```bash
+``` powershell
 docker pull ghcr.io/dnnhai/ls_point_bo:latest
 ```
 
 ## 2. Run Tests without Report (Quick check to verify the container runs correctly)
-```bash
+``` powershell
 docker run --rm ghcr.io/dnnhai/ls_point_bo:latest
 ```
 
@@ -30,15 +30,14 @@ scoop install allure
 ```
 
 ### d. Add PATH to Environment
-Example:
-```
-C:\Users\Admin\scoop\apps\allure\2.34.1\bin
+``` powershell
+$env:Path += ";$env:USERPROFILE\scoop\shims" 
 ```
 
 ---
 
-## 4. Run Tests with Report
-```bash
+## 4. Run Tests with Allure Report
+``` powershell
 docker run --rm -v ${PWD}\allure-results:/app/allure-results ghcr.io/dnnhai/ls_point_bo pytest --alluredir=/app/allure-results -v
 ```
 
@@ -46,7 +45,7 @@ docker run --rm -v ${PWD}\allure-results:/app/allure-results ghcr.io/dnnhai/ls_p
 
 ## 5. View Allure Report
 Stay in the folder that contains `allure-results`, then run:
-```bash
+``` powershell
 allure serve allure-results
 ```
 

@@ -3,6 +3,6 @@ __pycache__/
 venv/
 .idea/
 *.log
-reports/
+Reports/
 allure-report/
 .env
