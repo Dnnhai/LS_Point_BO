@@ -19,12 +19,11 @@ class TestLogin:
         home_pg = HomePage(page)
         time.sleep(1)
         account_icon = home_pg.is_login_success()
-        assert account_icon == True, "Loggin FAIL"
+        assert account_icon, "Loggin FAIL"
         mess = home_pg.get_loggin_success_mesasage()
         assert mess == 'Login successfully', "Loggin FAIL"
 
     # @pytest.mark.skip
-    @pytest.mark.regression
     def test_login_fail_with_wrong_password(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, "invalid-passwword")
