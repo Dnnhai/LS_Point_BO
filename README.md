@@ -1,5 +1,5 @@
 ﻿# LS Point BO - Automation Test with Playwright-pytest
-Run these comand with powershell
+Run these comands with powershell
 
 ## 1. Pull Docker Image
 ``` powershell
