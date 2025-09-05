@@ -1,18 +1,21 @@
-name: Docker CI/CD
+name: Docker CI/CD with Tests
 
 on:
   push:
-    branches: [ "master" ]        # Mỗi lần push vào master sẽ build
-    tags: [ "v*.*.*" ]            # Nếu có tag version thì build thêm
+    branches: [ "master" ]       # Push vào master thì build & chạy smoke
+    tags: [ "v*.*.*" ]           # Build thêm khi có tag version
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master" ]       # PR thì chỉ build & test (không push)
+  schedule:
+    - cron: "0 1 * * *"          # 1h sáng hàng ngày chạy regression
+  workflow_dispatch:              # Cho phép chạy manual
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,6 +30,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -42,8 +46,27 @@ jobs:
             type=raw,value=latest
             type=semver,pattern={{version}}
 
-      - name: Build and push Docker image
-        id: build-and-push
+      - name: Build Docker image (no push yet)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          load: true   # load image vào local Docker để run test
+          tags: test-image:latest
+
+      - name: Run Smoke Tests inside container
+        run: |
+          docker run --rm test-image:latest pytest -m smoke --disable-warnings -q --alluredir=reports/smoke
+
+      - name: Upload Smoke Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-report
+          path: reports/smoke
+
+      - name: Push Docker image (only if tests pass)
+        if: success() && github.event_name != 'pull_request'
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -51,14 +74,28 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Install cosign
-        uses: sigstore/cosign-installer@v3
-        with:
-          cosign-release: 'v2.2.4'
+  regression-tests:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Sign Docker image
-        if: ${{ github.event_name != 'pull_request' }}
-        env:
-          TAGS: ${{ steps.meta.outputs.tags }}
-          DIGEST: ${{ steps.build-and-push.outputs.digest }}
-        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Regression Tests
+        run: |
+          pytest -m regression --disable-warnings --alluredir=reports/regression
+
+      - name: Upload Regression Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-report
+          path: reports/regression
