@@ -13,6 +13,7 @@ from Utils.utils import Utils
 class TestMemberRegister:
 
     # @pytest.mark.skip
+    @pytest.mark.smoke
     def test_register_new_member_WestLake(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, Data.PASSWORD_DEV_WL)
@@ -33,6 +34,7 @@ class TestMemberRegister:
         reg_mem_pg.enter_phone_number()
         reg_mem_pg.selelect_day_of_birth()
         reg_mem_pg.enter_identity_number()
+        time.sleep(2)
         reg_mem_pg.choose_location()
 
         reg_mem_pg.select_add_card_method_auto()
@@ -48,6 +50,7 @@ class TestMemberRegister:
         Utils.save_to_file(login_id + " - WL")
 
     # @pytest.mark.skip
+    @pytest.mark.regression
     def test_register_new_member_LDS(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_LDS, Data.PASSWORD_DEV_LDS)
