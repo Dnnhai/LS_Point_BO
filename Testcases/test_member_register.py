@@ -35,7 +35,6 @@ class TestMemberRegister:
         reg_mem_pg.selelect_day_of_birth()
         reg_mem_pg.enter_identity_number()
         reg_mem_pg.choose_location()
-
         reg_mem_pg.select_add_card_method_auto()
         reg_mem_pg.choose_register_store_WL_HN()
         reg_mem_pg.chose_card_type_WL_standard()
@@ -75,6 +74,7 @@ class TestMemberRegister:
         reg_mem_pg.select_add_card_method_auto()
         reg_mem_pg.choose_register_store_LDS()
         reg_mem_pg.chose_card_type_LDS_standard()
+        page.pause()
         reg_mem_pg.click_submit_button()
 
         # Check if the result pop up is displayed

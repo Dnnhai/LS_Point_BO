@@ -34,15 +34,15 @@ class MemberRegisterPage(MemberRegPageLocators):
         self.enter_text(self.ID_NUMBER_FILED, UserDataGenerator.generate_random_ID())
 
     def choose_location(self):
-
-        time.sleep(0.3)
-        self.click_on(self.CITY_FILED)
-        time.sleep(0.3)
+        while not self.is_element_display(self.CITY_THE_FIRST):
+            time.sleep(0.5)
+            self.click_on(self.CITY_FILED)
         self.click_on(self.CITY_THE_FIRST)
 
         time.sleep(0.3)
         self.click_on(self.DISTRICT_FILED)
         self.click_on(self.DISTRICT_THE_FIRST)
+
         time.sleep(0.3)
         self.click_on(self.WARD_FILED)
         self.click_on(self.WARD_THE_FIRST)

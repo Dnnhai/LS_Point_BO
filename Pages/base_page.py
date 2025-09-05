@@ -21,8 +21,8 @@ class BasePage:
 
     @staticmethod
     def click_on(my_locator):
-        logging.info(f"click on the locator: {my_locator}")
         my_locator.wait_for(state="visible", timeout=10000)
+        logging.info(f"click on the locator: {my_locator}")
         my_locator.click()
         # self.page.locator(my_locator).wait_for(state="visible", timeout=5000)
         # self.page.click(my_locator)
@@ -57,9 +57,10 @@ class BasePage:
         logging.info(f"waiting for element has locator: '{my_locator}' is appear")
         flag = True
         try:
-            my_locator.wait_for(state="visible", timeout=50000)
+            my_locator.wait_for(state="visible", timeout=5000)
             my_locator.is_visible()
-        except:
+        except Exception as e:
+            logging.error(f"Element not visible: {e}")
             flag = False
             pass
         return flag
