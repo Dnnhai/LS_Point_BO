@@ -8,6 +8,8 @@ from Testdata.test_data import Data
 
 
 class TestLogin:
+    @pytest.mark.smoke
+    @pytest.mark.regression
     def test_login_success(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, Data.PASSWORD_DEV_WL)
@@ -22,6 +24,7 @@ class TestLogin:
         assert mess == 'Login successfully', "Loggin FAIL"
 
     # @pytest.mark.skip
+    @pytest.mark.regression
     def test_login_fail_with_wrong_password(self, page):
         login_page = LoginPage(page)
         login_page.login(Data.USERNAME_DEV_WL, "invalid-passwword")
@@ -29,6 +32,7 @@ class TestLogin:
         assert err_mess == "Password is incorrect", "FAIL"
 
     # @pytest.mark.skip
+    @pytest.mark.regression
     def test_login_user_not_found(self, page):
         login_page = LoginPage(page)
         login_page.login("User_not_found", "invalid-passwword")
