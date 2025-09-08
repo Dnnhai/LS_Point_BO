@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: smoke-report
-          path: reports/smoke
+          path: Reports/smoke
 
       - name: Push Docker image (only if tests pass)
         if: success() && github.event_name != 'pull_request'
@@ -93,4 +93,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: regression-report
-        path: reports/regression
+        path: Reports/regression
