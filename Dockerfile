@@ -12,6 +12,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Cài browsers Playwright (Chromium/Firefox/Webkit)
+RUN playwright install --with-deps
+
+# Copy toàn bộ code vào container
 COPY . .
 
 # Chạy pytest khi container start
