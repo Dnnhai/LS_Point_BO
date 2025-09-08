@@ -75,27 +75,22 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   regression-tests:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+    - name: Run Regression Tests inside container
+      run: |
+        docker build -t regression-image .
+        docker run --rm regression-image pytest -m regression --disable-warnings --alluredir=reports/regression
 
-      - name: Run Regression Tests
-        run: |
-          pytest -m regression --disable-warnings --alluredir=reports/regression
-
-      - name: Upload Regression Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: regression-report
-          path: reports/regression
+    - name: Upload Regression Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: regression-report
+        path: reports/regression
