@@ -75,9 +75,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   regression-tests:
-  if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-  runs-on: ubuntu-latest
-  steps:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
