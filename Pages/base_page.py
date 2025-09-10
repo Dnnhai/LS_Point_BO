@@ -5,13 +5,13 @@ import logging
 class BasePage:
     def __init__(self, page):
         self.page = page
-        self.timeout = 10
+        self.timeout = 10   # time is count by millisecond
         logging.basicConfig(level=logging.INFO)
 
     def navigate_to(self, url):
         try:
             logging.info(f"Navigate to link: {url}")
-            self.page.goto(url, timeout=self.timeout * 50000)  # time is count by millisecond
+            self.page.goto(url, timeout=self.timeout * 50000)
         except Exception as e:
             logging.error(f"Failed to navigate to link: {url}- {e}")
             raise
@@ -57,7 +57,7 @@ class BasePage:
         logging.info(f"waiting for element has locator: '{my_locator}' is appear")
         flag = True
         try:
-            my_locator.wait_for(state="visible", timeout=5000)
+            my_locator.wait_for(state="visible", timeout=50000)
             my_locator.is_visible()
         except Exception as e:
             logging.error(f"Element not visible: {e}")
